@@ -5,8 +5,7 @@ Here I am adding the code to design a new feature which can help users to get th
 from flask import Flask, jsonify
 
 app = Flask(__name__)
-# we can take data from the database 
-# Sample user data
+# we can take data from the database but here we created a Sample user data
 users = [
     {
         "id": 2,
