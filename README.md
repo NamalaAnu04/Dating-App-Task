@@ -36,13 +36,13 @@ users = [
 
 
 @app.route('/match/<int:user_id>', methods=['GET'])
+# Here a function is created to fetch user hobbies based on user_id and to calculate compatibility based on common hobbies
 def get_potential_matches(user_id):
-    # Fetch user hobbies based on user_id
     user_hobbies = [user['hobbies'] for user in users if user['id'] == user_id]
     if not user_hobbies:
         return jsonify({"error": "User not found."}), 404
-
-    # Calculate compatibility based on common hobbies
+        
+        
     potential_matches = []
     for user in users:
         if user['id'] != user_id:
@@ -53,7 +53,7 @@ def get_potential_matches(user_id):
                 "hobbies": list(common_hobbies)
             })
 
-    # Sort potential matches based on the number of common hobbies
+   # Sort potential matches based on the number of common hobbies
     potential_matches.sort(key=lambda x: len(x['hobbies']), reverse=True)
 
     return jsonify(potential_matches)
